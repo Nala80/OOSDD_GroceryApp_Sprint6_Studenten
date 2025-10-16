@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Grocery.App.ViewModels"
+             x:Class="Grocery.App.Views.NewProductView"
+             x:DataType="vm:NewProductViewModel"
+             Title="NewProductView">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Nieuw product toevoegen" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+
+    <StackLayout Padding="20" VerticalOptions="Center">
+        <Label Text="Product aanmaken" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Naam" FontSize="12" HorizontalOptions="Start" />
+        <Entry Placeholder="Naam" Text="{Binding Name}" Keyboard="Email" />
+        <Label Text="Voorraad" FontSize="12" HorizontalOptions="Start" />
+        <Entry Placeholder="Voorraad" 
+               Text="{Binding Stock, Converter={StaticResource IntToStringConverter}}"
+               Keyboard="Numeric"/>
+        <Label Text="Datum" FontSize="12" HorizontalOptions="Start" />
+        <DatePicker
+            Date="{Binding ShelfLife, Converter={StaticResource DateOnlyToDateTimeConverter}}"
+            Format="yyyy-MM-dd"
+            MinimumDate="2000-01-01"
+            MaximumDate="2200-12-31" />
+        <Label Text="Prijs" FontSize="12" HorizontalOptions="Start" />
+        <Entry Placeholder="Prijs" 
+               Text="{Binding Price, Converter={StaticResource DecimalToStringConverter}}"
+               Keyboard="Numeric"/>
+        <Button Text="Aanmaken" Command="{Binding AddProductCommand}" />
+        <Label Text="{Binding ErrorMessage}" TextColor="Red" />
+    </StackLayout>
+</ContentPage>

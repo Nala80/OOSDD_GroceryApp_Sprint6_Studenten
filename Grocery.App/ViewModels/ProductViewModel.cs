@@ -1,10 +1,13 @@
-﻿using Grocery.Core.Interfaces.Services;
+﻿using CommunityToolkit.Mvvm.Input;
+using Grocery.App.Views;
+using Grocery.Core.Interfaces.Services;
 using Grocery.Core.Models;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Grocery.App.ViewModels
 {
-    public class ProductViewModel : BaseViewModel
+    public partial class ProductViewModel : BaseViewModel
     {
         private readonly IProductService _productService;
         public ObservableCollection<Product> Products { get; set; }
@@ -14,6 +17,12 @@ namespace Grocery.App.ViewModels
             _productService = productService;
             Products = [];
             foreach (Product p in _productService.GetAll()) Products.Add(p);
+        }
+
+        [RelayCommand]
+        private async Task NewProduct()
+        {
+            await Shell.Current.GoToAsync(nameof(NewProductView));
         }
     }
 }

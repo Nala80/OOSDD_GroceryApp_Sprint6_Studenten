@@ -4,6 +4,13 @@
              xmlns:vm="clr-namespace:Grocery.App.ViewModels"
              x:Class="Grocery.App.Views.ProductView"
              Title="ProductView">
+
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Toevoegen" Command="{Binding NewProductCommand}" IconImageSource="{FontImage Glyph='&#xf30c;', Color=Black, Size=22}" />
+    </ContentPage.ToolbarItems>
+    
     
     <Shell.TitleView>
         <Grid>
@@ -26,7 +33,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Text="Naam van het product" Grid.Column="0" FontAttributes="Bold"/>
                     <Label Text="Voorraad" Grid.Column="1" FontAttributes="Bold"/>
-                    <Label Text="THT datum" Grid.Column="2" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+                    <Label Text="Datum" Grid.Column="2" HorizontalTextAlignment="End" FontAttributes="Bold"/>
                     <Label Text="Prijs" Grid.Column="3" HorizontalTextAlignment="End" FontAttributes="Bold"/>
                 </Grid>
             </CollectionView.Header>
